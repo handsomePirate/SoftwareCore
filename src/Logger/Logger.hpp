@@ -24,7 +24,7 @@ namespace Core
 	class Logger
 	{
 	public:
-		Logger() = default;
+		Logger(bool verbose = false);
 		~Logger() = default;
 
 		void Log(LoggerSeverity severity, const char* message, ...);
@@ -33,20 +33,17 @@ namespace Core
 		void RemoveOutput(uuid outputId);
 
 	private:
+		bool verbose_;
 		UUIDSystem uuidSystem_;
 		std::unordered_map<uuid, LogFunction> loggingFunctions_;
 	};
 }
 
-#if defined(SC_DEBUG) && defined(LOGGER_DO_TRACE)
+#if defined(SC_DEBUG)
 #define CoreLogTrace(logger, format, ...) (logger.Log)(::Core::LoggerSeverity::Trace, format, ##__VA_ARGS__)
-#else
-#define CoreLogTrace(logger, format, ...)
-#endif
-
-#ifdef SC_DEBUG
 #define CoreLogDebug(logger, format, ...) (logger.Log)(::Core::LoggerSeverity::Debug, format, ##__VA_ARGS__)
 #else
+#define CoreLogTrace(logger, format, ...)
 #define CoreLogDebug(logger, format, ...)
 #endif
 

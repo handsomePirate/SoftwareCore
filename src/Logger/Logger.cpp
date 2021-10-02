@@ -2,8 +2,16 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+Core::Logger::Logger(bool verbose)
+	: verbose_(verbose) {}
+
 void Core::Logger::Log(Core::LoggerSeverity severity, const char* message, ...)
 {
+	if (severity == Core::LoggerSeverity::Trace && !verbose_)
+	{
+		return;
+	}
+
 	va_list args;
 	va_start(args, message);
 
