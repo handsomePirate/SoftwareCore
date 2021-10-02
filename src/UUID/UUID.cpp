@@ -1,6 +1,6 @@
 #include "UUID.hpp"
 
-uuid UUIDSystem::Get()
+Core::uuid Core::UUIDSystem::Get()
 {
 	return current_.fetch_add(1);
 }

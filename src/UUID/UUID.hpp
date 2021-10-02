@@ -2,15 +2,18 @@
 #include <stdint.h>
 #include <atomic>
 
-typedef uint64_t uuid;
-
-class UUIDSystem
+namespace Core
 {
-public:
-	UUIDSystem() = default;
-	~UUIDSystem() = default;
+	typedef uint64_t uuid;
 
-	uuid Get();
-private:
-	std::atomic<uint64_t> current_ = 0;
-};
+	class UUIDSystem
+	{
+	public:
+		UUIDSystem() = default;
+		~UUIDSystem() = default;
+
+		uuid Get();
+	private:
+		std::atomic<uint64_t> current_ = 0;
+	};
+}
