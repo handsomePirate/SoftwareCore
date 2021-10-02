@@ -8,4 +8,5 @@ workspace "SoftwareCore"
 		"MultiProcessorCompile"
 	}
 	
-include "../proj"
+include "../proj/SoftwareCore"
+include "../proj/Test"
