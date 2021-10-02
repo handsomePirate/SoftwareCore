@@ -1,22 +1,12 @@
-workspace "SoftwareCore"
-	architecture "x64"
-	configurations { "Debug", "Release" }
-	location "proj"
-	
-	flags
-	{
-		"MultiProcessorCompile"
-	}
-
 project "SoftwareCore"
 	kind "StaticLib"
 	staticruntime "off"
 	language "C++"
 	cppdialect "C++17"
-	location "proj/SoftwareCore"
-	targetdir "./build/%{cfg.buildcfg}"
-	objdir "proj/SoftwareCore/obj/%{cfg.buildcfg}"
-	files { "src/**.hpp", "src/**.cpp" }
+	location "SoftwareCore"
+	targetdir "../build/%{cfg.buildcfg}"
+	objdir "SoftwareCore/obj/%{cfg.buildcfg}"
+	files { "../src/**.hpp", "../src/**.cpp" }
 
 	filter "system:windows"
 		systemversion "latest"
@@ -39,14 +29,14 @@ project "Test"
 	staticruntime "off"
 	language "C++"
 	cppdialect "C++17"
-	location "proj/Test"
-	targetdir "./Test/build/%{cfg.buildcfg}"
-	objdir "proj/Test/obj/%{cfg.buildcfg}"
-	files { "Test/src/**.hpp", "Test/src/**.cpp" }
+	location "Test"
+	targetdir "../Test/build/%{cfg.buildcfg}"
+	objdir "Test/obj/%{cfg.buildcfg}"
+	files { "../Test/src/**.hpp", "../Test/src/**.cpp" }
 	
 	includedirs {
-		"src",
-		"Test/src"
+		"../src",
+		"../Test/src"
 	}
 	
 	links {

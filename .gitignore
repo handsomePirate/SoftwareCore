@@ -36,9 +36,6 @@ bld/
 [Ll]og/
 [Ll]ogs/
 
-# The project folder
-[Pp]roj/
-
 # The src folder structure
 !src/*
 
@@ -359,3 +356,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# The project folder
+[Pp]roj/*
+[Ss]ln/*
+!*/premake5.lua
