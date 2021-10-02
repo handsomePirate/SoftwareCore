@@ -1,5 +1,6 @@
 #define SC_DEBUG
 #include "Logger/Logger.hpp"
+#include "Filesystem/Filesystem.hpp"
 #include <iostream>
 
 void OutputMessageConsole(const char* message, Core::LoggerSeverity severity)
@@ -39,14 +40,16 @@ void OutputMessageConsole(const char* message, Core::LoggerSeverity severity)
 int main(int argc, char* argv[])
 {
 	Core::Logger logger;
+	Core::Filesystem filesystem(argv[0]);
+	std::string pathToMain = filesystem.GetAbsolutePath("../../src/Main.cpp");
 
-	uuid firstOutputId = logger.SetNewOutput(OutputMessageConsole);
+	Core::uuid firstOutputId = logger.SetNewOutput(OutputMessageConsole);
 
-	CoreLogDebug(logger, "testing %i", 0);
+	CoreLogDebug(logger, "testing %s", pathToMain.c_str());
 
-	uuid secondOutputId = logger.SetNewOutput(OutputMessageConsole);
+	Core::uuid secondOutputId = logger.SetNewOutput(OutputMessageConsole);
 
-	CoreLogInfo(logger, "testing %i", 1);
+	CoreLogInfo(logger, "testing %s", filesystem.FileExists(pathToMain) ? "true" : "false");
 
 	logger.RemoveOutput(secondOutputId);
 

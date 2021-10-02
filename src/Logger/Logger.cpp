@@ -27,7 +27,7 @@ void Core::Logger::Log(Core::LoggerSeverity severity, const char* message, ...)
 	}
 }
 
-uuid Core::Logger::SetNewOutput(LogFunction logFunction)
+Core::uuid Core::Logger::SetNewOutput(LogFunction logFunction)
 {
 	uuid interfaceId = uuidSystem_.Get();
 	loggingFunctions_.insert(std::pair<uuid, LogFunction>(interfaceId, logFunction));
