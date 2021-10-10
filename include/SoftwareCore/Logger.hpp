@@ -1,5 +1,5 @@
 #pragma once
-#include "../UUID/UUID.hpp"
+#include "UUID.hpp"
 #include <unordered_map>
 
 #define LOGGER_DO_TRACE

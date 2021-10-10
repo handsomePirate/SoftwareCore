@@ -1,3 +1,5 @@
+SoftwareCoreInclude = path.getabsolute("../../include", os.getcwd())
+
 project "SoftwareCore"
 	kind "StaticLib"
 	staticruntime "off"
@@ -6,8 +8,12 @@ project "SoftwareCore"
 	location ""
 	targetdir "../../build/%{cfg.buildcfg}"
 	objdir "obj/%{cfg.buildcfg}"
-	files { "../../src/**.hpp", "../../src/**.cpp" }
-
+	files { "../../src/**.hpp", "../../src/**.cpp", "../../include/**.hpp" }
+	
+	includedirs {
+		SoftwareCoreInclude
+	}
+	
 	filter "system:windows"
 		systemversion "latest"
 	filter{}
