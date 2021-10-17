@@ -39,7 +39,7 @@ namespace Core
 	};
 }
 
-#if defined(SC_DEBUG)
+#if defined(DEBUG)
 #define CoreLogTrace(logger, format, ...) (logger.Log)(::Core::LoggerSeverity::Trace, format, ##__VA_ARGS__)
 #define CoreLogDebug(logger, format, ...) (logger.Log)(::Core::LoggerSeverity::Debug, format, ##__VA_ARGS__)
 #else
