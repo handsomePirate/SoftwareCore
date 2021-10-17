@@ -19,12 +19,12 @@ project "SoftwareCore"
 	filter{}
 	
 	filter "configurations:Debug"
-		defines { "SC_DEBUG" }
+		defines { "DEBUG" }
 		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
-		defines { "SC_RELEASE" }
+		defines { "RELEASE" }
 		runtime "Release"
 		optimize "On"
 
