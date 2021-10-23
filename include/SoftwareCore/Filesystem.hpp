@@ -18,7 +18,6 @@ namespace Core
 		std::string Filename(const std::string& path) const;
 		std::string Extension(const std::string& path) const;
 		std::string RemoveExtension(const std::string& path) const;
-		void RemoveExtension(std::string& path) const;
 
 	private:
 		struct Private;
