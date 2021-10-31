@@ -10,7 +10,8 @@ project "Test"
 	
 	includedirs {
 		"../../Test/src",
-		SoftwareCoreInclude
+		SoftwareCoreInclude,
+		OptickInclude
 	}
 	
 	links {
