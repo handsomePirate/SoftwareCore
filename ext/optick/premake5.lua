@@ -1,36 +1,37 @@
-SoftwareCoreInclude = path.getabsolute("../../include", os.getcwd())
+OptickInclude = os.getcwd()
 
-project "SoftwareCore"
+project "Optick"
 	kind "StaticLib"
 	staticruntime "off"
 	language "C++"
 	cppdialect "C++17"
 	location ""
-	targetdir "../../build/%{cfg.buildcfg}"
+	targetdir "build/%{cfg.buildcfg}"
 	objdir "obj/%{cfg.buildcfg}"
-	files { "../../src/**.hpp", "../../src/**.cpp", "../../include/**.hpp" }
-	
+	files { "optick/**.h", "optick/**.cpp" }
+
+	flags {
+		"MultiProcessorCompile"
+	}
+
 	includedirs {
-		SoftwareCoreInclude,
-		OptickInclude
+		"$(VULKAN_SDK)/include"
 	}
-	
+
 	links {
-		"Optick"
+		"$(VULKAN_SDK)/lib/vulkan-1.lib",
 	}
-	
+
 	filter "system:windows"
 		systemversion "latest"
 	filter{}
 	
 	filter "configurations:Debug"
 		defines { "DEBUG" }
-		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines { "RELEASE" }
-		runtime "Release"
 		optimize "On"
 
 	filter {}

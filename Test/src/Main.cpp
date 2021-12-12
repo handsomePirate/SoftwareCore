@@ -1,6 +1,7 @@
 #define SC_DEBUG
 #include <SoftwareCore/Logger.hpp>
 #include <SoftwareCore/Filesystem.hpp>
+#include <SoftwareCore/Profiler.hpp>
 #include <iostream>
 
 void OutputMessageConsole(const char* message, Core::LoggerSeverity severity)
