@@ -30,7 +30,7 @@ namespace Core
 
 	enum class EventCode;
 
-	typedef std::function<bool(EventCode, EventData)> OnEventFunc;
+	typedef std::function<void(EventCode, EventData)> OnEventFunc;
 
 	struct EventSystem
 	{
