@@ -11,12 +11,10 @@ project "SoftwareCore"
 	files { "../../src/**.hpp", "../../src/**.cpp", "../../include/**.hpp" }
 	
 	includedirs {
-		SoftwareCoreInclude,
-		OptickInclude
+		SoftwareCoreInclude
 	}
 	
 	links {
-		"Optick"
 	}
 	
 	filter "system:windows"
