@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_DEPRECATE
 #include "SoftwareCore/Filesystem.hpp"
 #include <filesystem>
 
