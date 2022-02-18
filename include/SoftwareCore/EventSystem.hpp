@@ -2,6 +2,7 @@
 #include "Singleton.hpp"
 #include <map>
 #include <functional>
+#include <inttypes.h>
 
 namespace Core
 {

@@ -41,14 +41,14 @@ std::string Core::Filesystem::GetAbsolutePath(const std::string& relativePath) c
 bool Core::Filesystem::FileExists(const std::string& path) const
 {
     std::filesystem::path fsPath(path);
-    std::filesystem::path absolutePath = fsPath.is_relative() ? GetAbsolutePath(path) : fsPath;
+    std::filesystem::path absolutePath = fsPath.is_relative() ? std::filesystem::path(GetAbsolutePath(path)) : fsPath;
     return std::filesystem::exists(absolutePath);
 }
 
 size_t Core::Filesystem::GetFileSize(const std::string& path) const
 {
     FILE* f;
-    fopen_s(&f, path.c_str(), "rb");
+    f = fopen(path.c_str(), "rb");
 
     fseek(f, 0, SEEK_END);
     const size_t fileSize = ftell(f);

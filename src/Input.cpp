@@ -1,4 +1,5 @@
 #include "SoftwareCore/Input.hpp"
+#include <string.h>
 
 Core::Input::Input()
 {

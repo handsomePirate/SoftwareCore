@@ -19,7 +19,7 @@ void Core::Logger::Log(Core::LoggerSeverity severity, const char* message, ...)
 	char* p = buffer;
 
 	// Do printf % magic
-	const int n = _vsnprintf_s(buffer, sizeof buffer - 2, message, args);
+	const int n = vsnprintf(buffer, sizeof buffer - 2, message, args);
 
 	// Make sure the message is properly ended
 	p += (n < 0) ? sizeof buffer - 2 : n;
