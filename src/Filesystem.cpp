@@ -1,6 +1,5 @@
 #define _CRT_SECURE_NO_DEPRECATE
 #include "SoftwareCore/Filesystem.hpp"
-#include <filesystem>
 
 struct Core::Filesystem::Private
 {
@@ -12,6 +11,14 @@ Core::Filesystem::Filesystem(const std::string& executablePath)
     : p_(new Filesystem::Private)
 {
     p_->Root = std::filesystem::path(executablePath);
+    p_->ExecutableName = p_->Root.filename();
+    p_->Root.remove_filename();
+}
+
+Core::Filesystem::Filesystem(const std::filesystem::path& executablePath)
+    : p_(new Filesystem::Private)
+{
+    p_->Root = executablePath;
     p_->ExecutableName = p_->Root.filename();
     p_->Root.remove_filename();
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <filesystem>
 
 namespace Core
 {
@@ -7,6 +8,7 @@ namespace Core
 	{
 	public:
 		Filesystem(const std::string& executablePath);
+		Filesystem(const std::filesystem::path& executablePath);
 		~Filesystem();
 
 		bool IsPathRelative(const std::string& path) const;

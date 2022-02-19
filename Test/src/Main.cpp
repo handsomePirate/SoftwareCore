@@ -1,6 +1,8 @@
 #define SC_DEBUG
 #include <SoftwareCore/Logger.hpp>
+#include <SoftwareCore/DefaultLogger.hpp>
 #include <SoftwareCore/Filesystem.hpp>
+#include <SoftwareCore/Process.hpp>
 #include <iostream>
 
 void OutputMessageConsole(const char* message, Core::LoggerSeverity severity)
@@ -39,21 +41,20 @@ void OutputMessageConsole(const char* message, Core::LoggerSeverity severity)
 
 int main(int argc, char* argv[])
 {
-	Core::Logger logger;
-	Core::Filesystem filesystem(argv[0]);
+	Core::Filesystem filesystem(CoreProcess.GetRuntimePath());
 	std::string pathToMain = filesystem.GetAbsolutePath("../../src/Main.cpp");
 
-	Core::uuid firstOutputId = logger.SetNewOutput(OutputMessageConsole);
+	Core::uuid firstOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
 
-	CoreLogDebug(logger, "testing %s", pathToMain.c_str());
+	CoreLogDebug(DefaultLogger, "testing %s", pathToMain.c_str());
 
-	Core::uuid secondOutputId = logger.SetNewOutput(OutputMessageConsole);
+	Core::uuid secondOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
 
-	CoreLogInfo(logger, "testing %s", filesystem.FileExists(pathToMain) ? "true" : "false");
+	CoreLogInfo(DefaultLogger, "testing %s", filesystem.FileExists(pathToMain) ? "true" : "false");
 
-	logger.RemoveOutput(secondOutputId);
+	DefaultLogger.RemoveOutput(secondOutputId);
 
-	CoreLogFatal(logger, "testing %i", 2);
+	CoreLogFatal(DefaultLogger, "testing %i", 2);
 
 	return 0;
 }
