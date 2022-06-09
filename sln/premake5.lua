@@ -10,6 +10,6 @@ workspace "SoftwareCore"
 	}
 	
 include "../dependencies.lua"
-	
+
 include "../proj/SoftwareCore"
 include "../proj/Test"

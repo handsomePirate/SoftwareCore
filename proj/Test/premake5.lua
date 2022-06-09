@@ -6,7 +6,10 @@ project "Test"
 	location ""
 	targetdir "../../Test/build/%{cfg.buildcfg}"
 	objdir "obj/%{cfg.buildcfg}"
-	files { "../../Test/src/**.hpp", "../../Test/src/**.cpp" }
+	files {
+		"../../Test/src/**.hpp",
+		"../../Test/src/**.cpp"
+	}
 	
 	includedirs {
 		"../../Test/src",

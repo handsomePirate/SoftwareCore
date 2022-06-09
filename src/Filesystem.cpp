@@ -58,6 +58,11 @@ size_t Core::Filesystem::GetFileSize(const std::string& path) const
     FILE* f;
     f = fopen(path.c_str(), "rb");
 
+    if (!f)
+    {
+        return 0;
+    }
+
     fseek(f, 0, SEEK_END);
     const size_t fileSize = ftell(f);
     fclose(f);
@@ -67,7 +72,13 @@ size_t Core::Filesystem::GetFileSize(const std::string& path) const
 void Core::Filesystem::ReadFile(const std::string& path, void* data, size_t size) const
 {
     FILE* f;
-    f = fopen(path.c_str(), "rb");
+    fopen_s(&f, path.c_str(), "rb");
+
+    if (!f)
+    {
+        *(char*)data = '\0';
+        return;
+    }
 
     fread(data, size, 1, f);
     fclose(f);

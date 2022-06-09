@@ -8,13 +8,27 @@ project "SoftwareCore"
 	location ""
 	targetdir "../../build/%{cfg.buildcfg}"
 	objdir "obj/%{cfg.buildcfg}"
-	files { "../../src/**.hpp", "../../src/**.cpp", "../../include/**.hpp" }
+	files {
+		"../../ext/uint128_t/uint128_t.h",
+		"../../ext/uint128_t/uint128_t.cpp",
+		"../../ext/uint128_t/uint128_t.include",
+		"../../ext/uint128_t/uint128_t.build",
+		"../../ext/uint128_t/uint128_t_config.include",
+		"../../ext/uint128_t/endianness.h",
+		"../../src/**.hpp",
+		"../../src/**.cpp",
+		"../../include/**.hpp"
+	}
 	
 	includedirs {
 		SoftwareCoreInclude
 	}
 	
 	links {
+	}
+	
+	defines {
+		"UINT128_T_BUILD"
 	}
 	
 	filter "system:windows"

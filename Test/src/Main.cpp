@@ -1,4 +1,5 @@
 #define SC_DEBUG
+#include <SoftwareCore/UUID.hpp>
 #include <SoftwareCore/Logger.hpp>
 #include <SoftwareCore/DefaultLogger.hpp>
 #include <SoftwareCore/Filesystem.hpp>
@@ -46,7 +47,7 @@ int main(int argc, char* argv[])
 
 	Core::uuid firstOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
 
-	CoreLogDebug(DefaultLogger, "testing %s", pathToMain.c_str());
+	CoreLogDebug(logger, "first id %llu", firstOutputId);
 
 	Core::uuid secondOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
 

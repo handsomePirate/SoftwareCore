@@ -1,6 +1,8 @@
 #pragma once
+#include "BigIntegers.hpp"
 #include <stdint.h>
 #include <atomic>
+#include <string>
 
 namespace Core
 {
@@ -9,11 +11,12 @@ namespace Core
 	class UUIDSystem
 	{
 	public:
-		UUIDSystem() = default;
+		UUIDSystem();
 		~UUIDSystem() = default;
 
+		void SetSeed(uint64_t seed);
 		uuid Get();
 	private:
-		std::atomic<uint64_t> current_ = 0;
+		uint128_t current_;
 	};
 }
