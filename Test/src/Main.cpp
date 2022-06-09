@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
 
 	Core::uuid firstOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
 
-	CoreLogDebug(logger, "first id %llu", firstOutputId);
+	CoreLogDebug(DefaultLogger, "first id %llu", firstOutputId);
 
 	Core::uuid secondOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
 

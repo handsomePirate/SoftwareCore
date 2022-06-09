@@ -56,7 +56,7 @@ bool Core::Filesystem::FileExists(const std::string& path) const
 size_t Core::Filesystem::GetFileSize(const std::string& path) const
 {
     FILE* f;
-    f = fopen(path.c_str(), "rb");
+    fopen_s(&f, path.c_str(), "rb");
 
     if (!f)
     {
