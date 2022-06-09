@@ -3,7 +3,8 @@
 #include <SoftwareCore/Logger.hpp>
 #include <SoftwareCore/DefaultLogger.hpp>
 #include <SoftwareCore/Filesystem.hpp>
-#include <SoftwareCore/Process.hpp>
+#include <SoftwareCore/Process.hpp>v
+#include <SoftwareCore/String.hpp>
 #include <iostream>
 
 void OutputMessageConsole(const char* message, Core::LoggerSeverity severity)
@@ -50,6 +51,9 @@ int main(int argc, char* argv[])
 	CoreLogDebug(DefaultLogger, "first id %llu", firstOutputId);
 
 	Core::uuid secondOutputId = DefaultLogger.SetNewOutput(OutputMessageConsole);
+
+	std::string uuidStr = Core::String::NumberToUUIDString(secondOutputId);
+	uint64_t backToNumber = Core::String::UUIDStringToNumber(uuidStr);
 
 	CoreLogInfo(DefaultLogger, "testing %s", filesystem.FileExists(pathToMain) ? "true" : "false");
 

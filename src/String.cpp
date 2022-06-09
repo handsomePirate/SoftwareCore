@@ -23,7 +23,7 @@ std::vector<std::string> Core::String::Split(const std::string& str, const std::
 			if (!ss.str().empty() || !trimEmptyStrings)
 			{
 				result.push_back(ss.str());
-				ss.clear();
+				ss.str(std::string());
 			}
 		}
 		else
@@ -31,6 +31,12 @@ std::vector<std::string> Core::String::Split(const std::string& str, const std::
 			ss << c;
 		}
 	}
+
+	if (!ss.str().empty() || !trimEmptyStrings)
+	{
+		result.push_back(ss.str());
+	}
+
 	return result;
 }
 
